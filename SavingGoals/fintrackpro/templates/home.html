@@ -1,0 +1,27 @@
+<h1>Choose your goal</h1>
+<a href="{% url 'create_savinggoals' %}">Add a new SavingGoal</a>
+<hr>
+
+{% for s in save %}
+    <div>
+        <h3>{{ s.goal_name }}</h3>
+        <p>Target: {{ s.target_amount }} | Saved: {{ s.current_amount }}</p>
+
+        <form action="{% url 'add_money' s.id %}" method="POST">
+            {% csrf_token %}
+            <input type="number" name="amount_to_add" placeholder="Amount" required>
+            <button type="submit">Add Money</button>
+        </form>
+
+        <br>
+
+        <a href="{% url 'delete_goal' s.id %}" style="color: red;">Delete Goal</a>
+
+        {% if s.is_finished %}
+            <p><b>Status: Goal Completed</b></p>
+        {% endif %}
+    </div>
+    <hr>
+{% empty %}
+    <p>No goals found.</p>
+{% endfor %}

@@ -1,0 +1,12 @@
+<h2>Create Your New Saving Goal</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <div style="margin-bottom: 15px;">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" style="padding: 5px 15px; cursor: pointer;">Save Goal</button>
+</form>
+
+<br>
+<a href="{% url 'home' %}">Cancel and Back to Home</a>
