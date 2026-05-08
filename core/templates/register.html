@@ -1,0 +1,61 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>FinTrackpro - Register</title>
+    <style>
+        body { background: #f8f9fa; height: 100vh; display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', sans-serif; margin: 0; }
+        .reg-card { background: white; padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); width: 420px; }
+        h2 { color: #007bff; text-align: center; margin-bottom: 25px; font-weight: 700; }
+
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .form-group { margin-bottom: 15px; }
+        .full-width { grid-column: span 2; }
+
+        label { display: block; font-size: 12px; color: #555; margin-bottom: 5px; font-weight: 600; text-transform: uppercase; }
+        input { width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        input:focus { border-color: #007bff; }
+
+        .btn-reg { width: 100%; padding: 14px; background: #007bff; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 15px; }
+        .btn-reg:hover { background: #0056b3; }
+
+        .footer-text { text-align: center; margin-top: 20px; font-size: 13px; color: #777; }
+        .footer-text a { color: #007bff; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="reg-card">
+        <h2>Create Account</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="grid-container">
+                <div class="form-group full-width">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group full-width">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="example@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" placeholder="017..." required>
+                </div>
+                <div class="form-group">
+                    <label>4-Digit PIN</label>
+                    <input type="password" maxlength="4" placeholder="◦ ◦ ◦ ◦" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Pass</label>
+                    <input type="password" placeholder="Confirm" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-reg">Register Account</button>
+        </form>
+        <p class="footer-text">Already have an ID? <a href="{% url 'login' %}">Login Now</a></p>
+    </div>
+</body>
+</html>

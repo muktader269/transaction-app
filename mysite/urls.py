@@ -3,5 +3,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('transaction.urls')),
+    path('', include('transaction.urls')), # 'home.urls' এর বদলে 'transaction.urls' হবে
+    path('savings/', include('SavingGoals.fintrackpro.savinggoals.urls')),
 ]

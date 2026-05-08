@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FinTrackpro - Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #f0f2f5; font-family: 'Segoe UI', sans-serif; }
+        .navbar { background: #d81b60; padding: 15px 50px; color: white; display: flex; justify-content: space-between; align-items: center; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 20px; }
+
+        .balance-card {
+            background: linear-gradient(135deg, #d81b60 0%, #ad1457 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 20px rgba(216, 27, 96, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .balance-info { text-align: center; margin-bottom: 20px; }
+        .balance-info p { font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+        .balance-info h1 { font-size: 36px; margin-top: 5px; }
+        .balance-stats {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            width: 100%;
+            padding: 15px;
+            border-radius: 15px;
+            justify-content: space-around;
+        }
+        .stat-item { text-align: center; }
+        .stat-item span { font-size: 11px; font-weight: bold; display: block; margin-bottom: 5px; }
+        .stat-item p { font-size: 18px; font-weight: 600; }
+        .stat-divider { width: 1px; background: rgba(255, 255, 255, 0.2); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card {
+            background: white; padding: 25px; border-radius: 15px; text-align: center;
+            text-decoration: none; color: #333; border: 1px solid #e0e0e0;
+            transition: 0.3s; display: block;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: #d81b60; }
+        .icon { font-size: 35px; margin-bottom: 12px; display: block; }
+        .card h3 { font-size: 17px; margin-bottom: 8px; color: #d81b60; }
+        .card p { font-size: 13px; color: #777; }
+        .logout-btn { color: white; text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.4); padding: 5px 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div style="font-size: 20px; font-weight: bold;">FinTrackpro</div>
+    <a href="{% url 'home' %}" class="logout-btn">Logout</a>
+</div>
+
+<div class="container">
+    <div class="balance-card">
+        <div class="balance-info">
+            <p>Current Balance</p>
+            <h1>৳ 25,450.00</h1>
+        </div>
+        <div class="balance-stats">
+            <div class="stat-item">
+                <span style="color: #81c784;">▼ Income</span>
+                <p>৳ 45,000</p>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span style="color: #ff8a80;">▲ Expense</span>
+                <p>৳ 19,550</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 style="color: #444; font-size: 20px; margin-left: 5px;">Explore Features</h2>
+
+    <div class="grid">
+        <a href="#" class="card">
+            <span class="icon">💸</span>
+            <h3>Transactions</h3>
+            <p>Track income & expenses</p>
+        </a>
+
+        <a href="#" class="card">
+            <span class="icon">🎯</span>
+            <h3>Savings Goal</h3>
+            <p>Set financial targets</p>
+        </a>
+
+        <a href="#" class="card">
+            <span class="icon">👤</span>
+            <h3>Profile & Media</h3>
+            <p>Manage your account</p>
+        </a>
+
+        <a href="#" class="card">
+            <span class="icon">🤝</span>
+            <h3>Trusted Circle</h3>
+            <p>Shared money management</p>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
