@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction Dashboard</title>
+    <style>
+        .container { display: flex; justify-content: space-around; padding: 50px; gap: 40px; font-family: Arial; }
+        .box { border: 2px solid #333; padding: 25px; border-radius: 10px; width: 45%; }
+        .form-box { background: #f9f9f9; }
+        .history-box { background: #fff; max-height: 400px; overflow-y: auto; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        button:hover { background: #218838; }
+        h2 { margin-top: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box form-box">
+            <h2>Send Money</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="phone" placeholder="Receiver Phone Number" required>
+                <input type="number" name="amount" placeholder="Amount (TK)" required>
+                <button type="submit">Confirm Transaction</button>
+            </form>
+        </div>
+
+        <div class="box history-box">
+            <h2>Transaction History</h2>
+            <hr style="border: 0.5px solid #ddd;">
+            {% for t in history %}
+                <div style="border-bottom: 1px solid #ddd; padding: 10px 0;">
+                    <strong>Sent: {{ t.amount }} TK</strong> to {{ t.receiver_phone }} <br>
+                    <small style="color: gray;">Time: {{ t.timestamp|date:"d M Y, H:i" }}</small>
+                </div>
+            {% empty %}
+                <p>No transactions found.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    </body>
+</html>
