@@ -5,7 +5,7 @@ from decimal import Decimal
 
 def home(request):
     save = SavingGoals.objects.all()
-    return render(request, 'home.html', {'save': save})
+    return render(request, 'homee.html', {'save': save})
 
 def create_savinggoals(request):
     if request.method == 'POST':

@@ -20,37 +20,45 @@
 
         .footer-text { text-align: center; margin-top: 20px; font-size: 13px; color: #777; }
         .footer-text a { color: #007bff; text-decoration: none; font-weight: bold; }
+        .error-msg { color: red; text-align: center; font-size: 12px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <div class="reg-card">
         <h2>Create Account</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="error-msg">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
         <form method="POST">
             {% csrf_token %}
             <div class="grid-container">
                 <div class="form-group full-width">
                     <label>Full Name</label>
-                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group full-width">
                     <label>Email Address</label>
-                    <input type="email" placeholder="example@gmail.com" required>
+                    <input type="email" name="email" placeholder="example@gmail.com" required>
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
-                    <input type="text" placeholder="017..." required>
+                    <input type="text" name="phone" placeholder="017..." required>
                 </div>
                 <div class="form-group">
-                    <label>4-Digit PIN</label>
-                    <input type="password" maxlength="4" placeholder="◦ ◦ ◦ ◦" required>
+                    <label>4-Digit PIN (Password)</label>
+                    <input type="password" name="pin" maxlength="4" placeholder="◦ ◦ ◦ ◦" required>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" placeholder="Password" required>
+                    <label>Extra Security</label>
+                    <input type="password" placeholder="Optional">
                 </div>
                 <div class="form-group">
-                    <label>Confirm Pass</label>
-                    <input type="password" placeholder="Confirm" required>
+                    <label>Confirm</label>
+                    <input type="password" placeholder="Confirm">
                 </div>
             </div>
             <button type="submit" class="btn-reg">Register Account</button>

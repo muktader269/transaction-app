@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving Goals</title>
+    <style>
+        /* Aesthetic Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .add-link {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: #27ae60;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        .add-link:hover { background: #219150; }
+
+        .goal-card {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+        .goal-card:hover { transform: translateY(-3px); }
+
+        h3 { margin: 0 0 10px 0; color: #34495e; }
+        p { font-size: 14px; color: #7f8c8d; }
+
+        input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 120px;
+            outline: none;
+        }
+        button {
+            padding: 8px 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { background: #2980b9; }
+
+        .delete-btn {
+            font-size: 13px;
+            text-decoration: none;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        .status-completed {
+            color: #27ae60;
+            background: #eafaf1;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        hr { border: 0; border-top: 1px solid #eee; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Choose your goal</h1>
+    <a href="{% url 'create_savinggoals' %}" class="add-link">Add a new SavingGoal</a>
+
+    <hr>
+
+    {% for s in save %}
+        <div class="goal-card">
+            <h3>{{ s.goal_name }}</h3>
+            <p>Target: <b>{{ s.target_amount }}</b> | Saved: <b>{{ s.current_amount }}</b></p>
+
+            <form action="{% url 'add_money' s.id %}" method="POST">
+                {% csrf_token %}
+                <input type="number" name="amount_to_add" placeholder="Amount" required>
+                <button type="submit">Add Money</button>
+            </form>
+
+            <br>
+
+            <a href="{% url 'delete_goal' s.id %}" class="delete-btn" style="color: #e74c3c;">Delete Goal</a>
+
+            {% if s.is_finished %}
+                <div class="status-completed"><b>Status: Goal Completed ✅</b></div>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p style="text-align: center;">No goals found.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

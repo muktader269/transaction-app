@@ -59,17 +59,16 @@
     <div class="balance-card">
         <div class="balance-info">
             <p>Current Balance</p>
-            <h1>৳ 25,450.00</h1>
-        </div>
+            <h1>৳ 0.00</h1> </div>
         <div class="balance-stats">
             <div class="stat-item">
                 <span style="color: #81c784;">▼ Income</span>
-                <p>৳ 45,000</p>
+                <p>৳ 0</p>
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item">
                 <span style="color: #ff8a80;">▲ Expense</span>
-                <p>৳ 19,550</p>
+                <p>৳ 0</p>
             </div>
         </div>
     </div>
@@ -77,22 +76,16 @@
     <h2 style="color: #444; font-size: 20px; margin-left: 5px;">Explore Features</h2>
 
     <div class="grid">
-        <a href="#" class="card">
+        <a href="{% url 'transaction_list' %}" class="card">
             <span class="icon">💸</span>
             <h3>Transactions</h3>
             <p>Track income & expenses</p>
         </a>
 
-        <a href="#" class="card">
+        <a href="{% url 'savinggoals_list' %}" class="card">
             <span class="icon">🎯</span>
             <h3>Savings Goal</h3>
             <p>Set financial targets</p>
-        </a>
-
-        <a href="#" class="card">
-            <span class="icon">👤</span>
-            <h3>Profile & Media</h3>
-            <p>Manage your account</p>
         </a>
 
         <a href="#" class="card">
