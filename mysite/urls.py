@@ -6,7 +6,6 @@ urlpatterns = [
 
     path('', include('myproject.urls')),
 
-    
     path('transactions/', include('transaction.urls'), name='user_transactions'),
     path('savings/', include('SavingGoals.fintrackpro.savinggoals.urls'), name='user_savings'),
 ]

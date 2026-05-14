@@ -25,6 +25,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS =[
+
     'core',
     'SavingGoals.fintrackpro.savinggoals',
     'transaction',
